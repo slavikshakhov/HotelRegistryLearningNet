@@ -1,0 +1,44 @@
+# Build results
+bin/
+obj/
+*.dll
+*.exe
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Visual Studio Code settings
+.vscode/
+
+# Logs
+*.log
+logs/
+
+# ASP.NET generated files
+Generated_Code/
+
+# Config transforms
+appsettings.*.json
+
+# Dotnet tools
+tools/
+
+# Backup files
+*.bak
+*.orig
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Rider/JetBrains IDEs
+.idea/
+
+# Optional: if using NuGet packages locally
+packages/
+
+# Node/npm (if full-stack with frontend)
+node_modules/
