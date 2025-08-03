@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HotelReristryAPI.VSCode.Migrations
 {
     [DbContext(typeof(HotelGeristryDbContext))]
-    [Migration("20250801065107_SeedCountriesAndHotels")]
-    partial class SeedCountriesAndHotels
+    [Migration("20250803103300_InitialCreateAndSeed")]
+    partial class InitialCreateAndSeed
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
