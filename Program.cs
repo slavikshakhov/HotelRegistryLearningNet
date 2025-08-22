@@ -1,6 +1,9 @@
 using Microsoft.OpenApi.Models;
 using Serilog;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 var connectionString =
@@ -12,6 +15,9 @@ builder.Services.AddDbContext<HotelGeristryDbContext>(options =>
     options.UseSqlServer(connectionString));
 
 // Add services to the container.
+builder.Services.AddIdentityCore<ApiUser>()
+    .AddRoles<IdentityRole>()
+    .AddEntityFrameworkStores<HotelGeristryDbContext>();
 
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
@@ -25,12 +31,15 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowAll", b => b.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod());
 });
 
+
+
 builder.Services.AddAutoMapper(typeof(MapperConfig));
 builder.Host.UseSerilog((ctx, lc) => lc.WriteTo.Console().ReadFrom.Configuration(ctx.Configuration));
 
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddScoped<ICountriesRepository, CountriesRepository>();
 builder.Services.AddScoped<IHotelsRepository, HotelsRepository>();
+builder.Services.AddScoped<IAuthManager, AuthManager>();
 
 var app = builder.Build();
 

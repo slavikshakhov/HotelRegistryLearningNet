@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HotelReristryAPI.VSCode.Migrations
 {
     [DbContext(typeof(HotelGeristryDbContext))]
-    partial class HotelGeristryDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250806143118_AddIdentityTables")]
+    partial class AddIdentityTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -116,18 +119,6 @@ namespace HotelReristryAPI.VSCode.Migrations
                             Id = 1,
                             Name = "Jamaica",
                             ShortName = "JM"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Bahamas",
-                            ShortName = "BS"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "Cayman Island",
-                            ShortName = "CI"
                         });
                 });
 
@@ -163,24 +154,16 @@ namespace HotelReristryAPI.VSCode.Migrations
                             Id = 1,
                             Address = "Negril",
                             CountryId = 1,
-                            Name = "Sandals Resort and Spa",
+                            Name = "My Hotel",
                             Rating = 4.5
                         },
                         new
                         {
                             Id = 2,
-                            Address = "George Town",
-                            CountryId = 3,
-                            Name = "Comfort Suites",
-                            Rating = 4.2999999999999998
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Address = "Nassua",
-                            CountryId = 2,
-                            Name = "Grand Palldium",
-                            Rating = 4.0
+                            Address = "some address",
+                            CountryId = 1,
+                            Name = "My Hotel2",
+                            Rating = 5.0
                         });
                 });
 
@@ -209,20 +192,6 @@ namespace HotelReristryAPI.VSCode.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "89b79448-cc30-4bee-bd52-89311c67e572",
-                            Name = "Administrator",
-                            NormalizedName = "ADMINISTRATOR"
-                        },
-                        new
-                        {
-                            Id = "60e9df77-1412-4d67-8a55-18cc356a9e52",
-                            Name = "User",
-                            NormalizedName = "USER"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
